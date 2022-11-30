@@ -1,0 +1,9 @@
+[build-options]
+  observabilityIncluded = true
+
+[package]
+  distribution = "2201.2.3"
+  name = "customer_api_ballerina_pd"
+  org = "ramith"
+  version = "0.1.0"
+
