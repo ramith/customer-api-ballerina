@@ -23,10 +23,6 @@
             "dbName": {
               "type": "string",
               "description": ""
-            },
-            "test": {
-              "type": "string",
-              "description": ""
             }
           },
           "additionalProperties": false,
@@ -34,8 +30,7 @@
             "dbHost",
             "dbUser",
             "dbPassword",
-            "dbName",
-            "test"
+            "dbName"
           ]
         }
       },

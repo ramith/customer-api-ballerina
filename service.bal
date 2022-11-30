@@ -2,7 +2,6 @@ import ballerina/http;
 import ballerina/sql;
 import ballerinax/mysql;
 import ballerinax/mysql.driver as _;
-import ballerina/log;
 
 public type Customer record {
     @sql:Column {name: "account_id"}
@@ -20,7 +19,6 @@ configurable string dbHost = ?;
 configurable string dbUser = ?;
 configurable string dbPassword = ?;
 configurable string dbName = ?;
-configurable string test = ?;
 mysql:Client mysqlEp = check new (host = dbHost, user = dbUser, password = dbPassword, database = dbName, port = 3306);
 
 # A service representing a network-accessible API
@@ -35,7 +33,6 @@ service / on new http:Listener(9090) {
         if customer is sql:NoRowsError {
             return http:NOT_FOUND;
         }
-        log:printInfo(test);
         return customer;
     }
 }
