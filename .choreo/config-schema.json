@@ -24,8 +24,8 @@
               "type": "string",
               "description": ""
             },
-            "dbPort": {
-              "type": "integer",
+            "test": {
+              "type": "string",
               "description": ""
             }
           },
@@ -34,7 +34,8 @@
             "dbHost",
             "dbUser",
             "dbPassword",
-            "dbName"
+            "dbName",
+            "test"
           ]
         }
       },
