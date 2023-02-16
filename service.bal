@@ -1,3 +1,4 @@
+import ballerina/log;
 import ballerina/http;
 import ballerina/sql;
 import ballerinax/mysql;
@@ -28,11 +29,23 @@ service / on new http:Listener(9090) {
     # A resource get customer given the account id 
     # + accountId - the account id of the customer
     # + return - the customer or an error or nothing
-    resource function get customer/[string accountId]() returns Customer| http:NotFound | error {
+    resource function get customer/[string accountId]() returns Customer|http:NotFound|error {
         Customer|error customer = mysqlEp->queryRow(sqlQuery = `SELECT * FROM customer WHERE account_Id = ${accountId}`);
         if customer is sql:NoRowsError {
             return http:NOT_FOUND;
         }
         return customer;
+    }
+
+    resource function get cust/[string accountId]() returns Customer| error? {
+
+        log:printInfo("customer id: " + accountId);
+
+        return {
+            accountId: accountId,
+            firstName: "John",
+            lastName: "Doe",
+            kycStatus: "PENDING"
+        };
     }
 }
